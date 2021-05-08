@@ -18,6 +18,7 @@ procedure InitializeComponent;
         self.openFileDialog1 := new System.Windows.Forms.OpenFileDialog();
         self.openFileDialog2 := new System.Windows.Forms.OpenFileDialog();
         self.BuildPanel := new System.Windows.Forms.Panel();
+        self.label5 := new System.Windows.Forms.Label();
         self.progressBar1 := new System.Windows.Forms.ProgressBar();
         self.button3 := new System.Windows.Forms.Button();
         self.FilesPanel := new System.Windows.Forms.Panel();
@@ -32,7 +33,6 @@ procedure InitializeComponent;
         self.label2 := new System.Windows.Forms.Label();
         self.textBox1 := new System.Windows.Forms.TextBox();
         self.label1 := new System.Windows.Forms.Label();
-        self.label5 := new System.Windows.Forms.Label();
         self.menuStrip1.SuspendLayout();
         self.BuildPanel.SuspendLayout();
         self.FilesPanel.SuspendLayout();
@@ -164,6 +164,17 @@ procedure InitializeComponent;
         self.BuildPanel.TabIndex := 4;
         self.BuildPanel.Visible := false;
         // 
+        // label5
+        // 
+        self.label5.ForeColor := System.Drawing.Color.Red;
+        self.label5.Location := new System.Drawing.Point(90, 29);
+        self.label5.Name := 'label5';
+        self.label5.Size := new System.Drawing.Size(189, 13);
+        self.label5.TabIndex := 2;
+        self.label5.Text := 'Blank spaces were left somewhere';
+        self.label5.TextAlign := System.Drawing.ContentAlignment.TopCenter;
+        self.label5.Visible := false;
+        // 
         // progressBar1
         // 
         self.progressBar1.Location := new System.Drawing.Point(92, 10);
@@ -289,17 +300,6 @@ procedure InitializeComponent;
         self.label1.Size := new System.Drawing.Size(78, 13);
         self.label1.TabIndex := 0;
         self.label1.Text := 'Program name:';
-        // 
-        // label5
-        // 
-        self.label5.ForeColor := System.Drawing.Color.Red;
-        self.label5.Location := new System.Drawing.Point(90, 29);
-        self.label5.Name := 'label5';
-        self.label5.Size := new System.Drawing.Size(189, 13);
-        self.label5.TabIndex := 2;
-        self.label5.Text := 'Blank spaces were left somewhere';
-        self.label5.TextAlign := System.Drawing.ContentAlignment.TopCenter;
-        self.label5.Visible := false;
         // 
         // Form1
         // 
