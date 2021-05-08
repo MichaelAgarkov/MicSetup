@@ -12,3 +12,5 @@ It's size is also **lesser than a megabyte**, which makes it be very compact and
 I didn't really make it be able to build single executable installers yet, right now it only builds installers which have everything located in a folder, perfect for a CD disc, right?
 
 I hope you like it, and you will make use out of it!
+
+For the source code, I recommend using PascalABC.NET version 3.4.2 build 2050, because it's the version I use, and the version it is compiled in. You can get it here: https://tinyurl.com/PascalABCNET
