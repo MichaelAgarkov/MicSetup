@@ -17,6 +17,7 @@ type
     procedure Form1_Load(sender: Object; e: EventArgs);
     procedure showInstallersToolStripMenuItem_Click(sender: Object; e: EventArgs);
     procedure closeMicSetupToolStripMenuItem_Click(sender: Object; e: EventArgs);
+    procedure checkBox1_CheckedChanged(sender: Object; e: EventArgs);
   {$region FormDesigner}
   private
     {$resource Unit1.Form1.resources}
@@ -48,6 +49,7 @@ type
     showInstallersToolStripMenuItem: ToolStripMenuItem;
     textBox4: TextBox;
     label5: &Label;
+    checkBox1: CheckBox;
     treeView1: TreeView;
     {$include Unit1.Form1.inc}
   {$endregion FormDesigner}
@@ -106,15 +108,17 @@ end;
 
 procedure Form1.button3_Click(sender: Object; e: EventArgs);
 begin
-  if((textBox1.Text <> '') and (textBox2.Text <> '') and (textBox3.Text <> '') and (textBox4.Text <> '')) then begin
+  if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
     label5.Visible := false;
     System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
     progressBar1.Value := 1;
     WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
     progressBar1.Value := 10;
     WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
-    progressBar1.Value := 20;
-    System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
+    if(checkBox1.Checked) then begin
+      progressBar1.Value := 20;
+      System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
+    end;
     progressBar1.Value := 30;
     System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe');
     progressBar1.Value := 50;
@@ -126,15 +130,17 @@ end;
 procedure Form1.buildToolStripMenuItem_Click(sender: Object; e: EventArgs);
 begin
   treeView1.SelectedNode := treeView1.Nodes[2];
-  if((textBox1.Text <> '') and (textBox2.Text <> '') and (textBox3.Text <> '') and (textBox4.Text <> '')) then begin
+  if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
     label5.Visible := false;
     System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
     progressBar1.Value := 1;
     WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
     progressBar1.Value := 10;
     WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
-    progressBar1.Value := 20;
-    System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
+    if(checkBox1.Checked) then begin
+      progressBar1.Value := 20;
+      System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
+    end;
     progressBar1.Value := 30;
     System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe');
     progressBar1.Value := 50;
@@ -156,6 +162,13 @@ end;
 procedure Form1.closeMicSetupToolStripMenuItem_Click(sender: Object; e: EventArgs);
 begin
   halt;
+end;
+
+procedure Form1.checkBox1_CheckedChanged(sender: Object; e: EventArgs);
+begin
+  textBox3.Enabled := checkBox1.Checked;
+  button2.Enabled := checkBox1.Checked;
+  label4.Enabled := checkBox1.Checked;
 end;
 
 end.

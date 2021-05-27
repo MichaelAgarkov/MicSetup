@@ -33,6 +33,7 @@ procedure InitializeComponent;
         self.label2 := new System.Windows.Forms.Label();
         self.textBox1 := new System.Windows.Forms.TextBox();
         self.label1 := new System.Windows.Forms.Label();
+        self.checkBox1 := new System.Windows.Forms.CheckBox();
         self.menuStrip1.SuspendLayout();
         self.BuildPanel.SuspendLayout();
         self.FilesPanel.SuspendLayout();
@@ -231,6 +232,7 @@ procedure InitializeComponent;
         // 
         // InfoPanel
         // 
+        self.InfoPanel.Controls.Add(self.checkBox1);
         self.InfoPanel.Controls.Add(self.textBox4);
         self.InfoPanel.Controls.Add(self.button2);
         self.InfoPanel.Controls.Add(self.textBox3);
@@ -254,7 +256,7 @@ procedure InitializeComponent;
         // 
         // button2
         // 
-        self.button2.Location := new System.Drawing.Point(255, 56);
+        self.button2.Location := new System.Drawing.Point(255, 89);
         self.button2.Name := 'button2';
         self.button2.Size := new System.Drawing.Size(24, 23);
         self.button2.TabIndex := 7;
@@ -264,14 +266,14 @@ procedure InitializeComponent;
         // 
         // textBox3
         // 
-        self.textBox3.Location := new System.Drawing.Point(92, 58);
+        self.textBox3.Location := new System.Drawing.Point(92, 91);
         self.textBox3.Name := 'textBox3';
         self.textBox3.Size := new System.Drawing.Size(157, 20);
         self.textBox3.TabIndex := 6;
         // 
         // label4
         // 
-        self.label4.Location := new System.Drawing.Point(6, 61);
+        self.label4.Location := new System.Drawing.Point(6, 94);
         self.label4.Name := 'label4';
         self.label4.Size := new System.Drawing.Size(80, 13);
         self.label4.TabIndex := 5;
@@ -300,6 +302,18 @@ procedure InitializeComponent;
         self.label1.Size := new System.Drawing.Size(78, 13);
         self.label1.TabIndex := 0;
         self.label1.Text := 'Program name:';
+        // 
+        // checkBox1
+        // 
+        self.checkBox1.Checked := true;
+        self.checkBox1.CheckState := System.Windows.Forms.CheckState.Checked;
+        self.checkBox1.Location := new System.Drawing.Point(6, 68);
+        self.checkBox1.Name := 'checkBox1';
+        self.checkBox1.Size := new System.Drawing.Size(273, 17);
+        self.checkBox1.TabIndex := 9;
+        self.checkBox1.Text := 'Include a license agreement';
+        self.checkBox1.UseVisualStyleBackColor := true;
+        self.checkBox1.CheckedChanged += checkBox1_CheckedChanged;
         // 
         // Form1
         // 
