@@ -18,6 +18,8 @@ procedure InitializeComponent;
         self.openFileDialog1 := new System.Windows.Forms.OpenFileDialog();
         self.openFileDialog2 := new System.Windows.Forms.OpenFileDialog();
         self.BuildPanel := new System.Windows.Forms.Panel();
+        self.button4 := new System.Windows.Forms.Button();
+        self.richTextBox1 := new System.Windows.Forms.RichTextBox();
         self.label5 := new System.Windows.Forms.Label();
         self.progressBar1 := new System.Windows.Forms.ProgressBar();
         self.button3 := new System.Windows.Forms.Button();
@@ -26,6 +28,7 @@ procedure InitializeComponent;
         self.textBox2 := new System.Windows.Forms.TextBox();
         self.label3 := new System.Windows.Forms.Label();
         self.InfoPanel := new System.Windows.Forms.Panel();
+        self.checkBox1 := new System.Windows.Forms.CheckBox();
         self.textBox4 := new System.Windows.Forms.TextBox();
         self.button2 := new System.Windows.Forms.Button();
         self.textBox3 := new System.Windows.Forms.TextBox();
@@ -33,7 +36,7 @@ procedure InitializeComponent;
         self.label2 := new System.Windows.Forms.Label();
         self.textBox1 := new System.Windows.Forms.TextBox();
         self.label1 := new System.Windows.Forms.Label();
-        self.checkBox1 := new System.Windows.Forms.CheckBox();
+        self.saveFileDialog1 := new System.Windows.Forms.SaveFileDialog();
         self.menuStrip1.SuspendLayout();
         self.BuildPanel.SuspendLayout();
         self.FilesPanel.SuspendLayout();
@@ -155,6 +158,8 @@ procedure InitializeComponent;
         // 
         // BuildPanel
         // 
+        self.BuildPanel.Controls.Add(self.button4);
+        self.BuildPanel.Controls.Add(self.richTextBox1);
         self.BuildPanel.Controls.Add(self.label5);
         self.BuildPanel.Controls.Add(self.progressBar1);
         self.BuildPanel.Controls.Add(self.button3);
@@ -164,6 +169,29 @@ procedure InitializeComponent;
         self.BuildPanel.Size := new System.Drawing.Size(291, 287);
         self.BuildPanel.TabIndex := 4;
         self.BuildPanel.Visible := false;
+        // 
+        // button4
+        // 
+        self.button4.Enabled := false;
+        self.button4.Location := new System.Drawing.Point(204, 252);
+        self.button4.Name := 'button4';
+        self.button4.Size := new System.Drawing.Size(75, 23);
+        self.button4.TabIndex := 4;
+        self.button4.Text := 'Save log';
+        self.button4.UseVisualStyleBackColor := true;
+        self.button4.Click += button4_Click;
+        // 
+        // richTextBox1
+        // 
+        self.richTextBox1.DetectUrls := false;
+        self.richTextBox1.Location := new System.Drawing.Point(6, 58);
+        self.richTextBox1.Name := 'richTextBox1';
+        self.richTextBox1.ReadOnly := true;
+        self.richTextBox1.Size := new System.Drawing.Size(279, 188);
+        self.richTextBox1.TabIndex := 3;
+        self.richTextBox1.Text := #10;
+        self.richTextBox1.WordWrap := false;
+        self.richTextBox1.TextChanged += richTextBox1_TextChanged;
         // 
         // label5
         // 
@@ -246,6 +274,18 @@ procedure InitializeComponent;
         self.InfoPanel.Size := new System.Drawing.Size(291, 287);
         self.InfoPanel.TabIndex := 2;
         // 
+        // checkBox1
+        // 
+        self.checkBox1.Checked := true;
+        self.checkBox1.CheckState := System.Windows.Forms.CheckState.Checked;
+        self.checkBox1.Location := new System.Drawing.Point(6, 68);
+        self.checkBox1.Name := 'checkBox1';
+        self.checkBox1.Size := new System.Drawing.Size(273, 17);
+        self.checkBox1.TabIndex := 9;
+        self.checkBox1.Text := 'Include a license agreement';
+        self.checkBox1.UseVisualStyleBackColor := true;
+        self.checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+        // 
         // textBox4
         // 
         self.textBox4.Location := new System.Drawing.Point(98, 32);
@@ -303,17 +343,13 @@ procedure InitializeComponent;
         self.label1.TabIndex := 0;
         self.label1.Text := 'Program name:';
         // 
-        // checkBox1
+        // saveFileDialog1
         // 
-        self.checkBox1.Checked := true;
-        self.checkBox1.CheckState := System.Windows.Forms.CheckState.Checked;
-        self.checkBox1.Location := new System.Drawing.Point(6, 68);
-        self.checkBox1.Name := 'checkBox1';
-        self.checkBox1.Size := new System.Drawing.Size(273, 17);
-        self.checkBox1.TabIndex := 9;
-        self.checkBox1.Text := 'Include a license agreement';
-        self.checkBox1.UseVisualStyleBackColor := true;
-        self.checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+        self.saveFileDialog1.DefaultExt := 'log';
+        self.saveFileDialog1.FileName := 'Build log';
+        self.saveFileDialog1.Filter := 'Log file|*.log';
+        self.saveFileDialog1.Title := 'Select where to save the build log';
+        self.saveFileDialog1.FileOk += saveFileDialog1_FileOk;
         // 
         // Form1
         // 
