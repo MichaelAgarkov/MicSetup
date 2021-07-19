@@ -114,57 +114,67 @@ end;
 
 procedure Form1.button3_Click(sender: Object; e: EventArgs);
 begin
-  if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
-    label5.Visible := false;
-    richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
-    System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
-    richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
-    progressBar1.Value := 1;
-    WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
-    progressBar1.Value := 10;
-    WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
-    richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
-    if(checkBox1.Checked) then begin
-      progressBar1.Value := 20;
-      System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
-      richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
-    end;
-    progressBar1.Value := 30;
-    System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe');
-    richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
-    progressBar1.Value := 50;
-    System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe');
-    richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
-    progressBar1.Value := 100;
-  end else label5.Visible := true;
+  try
+    if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      label5.Visible := false;
+      richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
+      System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
+      richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
+      progressBar1.Value := 1;
+      WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
+      progressBar1.Value := 10;
+      WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
+      richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
+      if(checkBox1.Checked) then begin
+        progressBar1.Value := 20;
+        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt', true);
+        richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
+      end;
+      progressBar1.Value := 30;
+      System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe', true);
+      richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
+      progressBar1.Value := 50;
+      System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
+      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
+      progressBar1.Value := 100;
+    end else label5.Visible := true;
+  except
+    richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
+    progressBar1.Value := 0;
+  end;
 end;
 
 procedure Form1.buildToolStripMenuItem_Click(sender: Object; e: EventArgs);
 begin
   treeView1.SelectedNode := treeView1.Nodes[2];
-  if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
-    label5.Visible := false;
-    richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
-    System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
-    richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
-    progressBar1.Value := 1;
-    WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
-    progressBar1.Value := 10;
-    WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
-    richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
-    if(checkBox1.Checked) then begin
-      progressBar1.Value := 20;
-      System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt');
-      richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
-    end;
-    progressBar1.Value := 30;
-    System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe');
-    richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
-    progressBar1.Value := 50;
-    System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe');
-    richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
-    progressBar1.Value := 100;
-  end else label5.Visible := true;
+  try
+    if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      label5.Visible := false;
+      richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
+      System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
+      richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
+      progressBar1.Value := 1;
+      WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programname.cfg', textBox1.Lines);
+      progressBar1.Value := 10;
+      WriteLines(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'programver.cfg', textBox4.Lines);
+      richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
+      if(checkBox1.Checked) then begin
+        progressBar1.Value := 20;
+        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt', true);
+        richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
+      end;
+      progressBar1.Value := 30;
+      System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe', true);
+      richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
+      progressBar1.Value := 50;
+      System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
+      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
+      progressBar1.Value := 100;
+    end else label5.Visible := true;
+  except
+    richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
+    progressBar1.Value := 0;
+  end;
 end;
 
 procedure Form1.Form1_Load(sender: Object; e: EventArgs);
