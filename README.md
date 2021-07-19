@@ -1,5 +1,5 @@
 ![Screenshot_1](https://user-images.githubusercontent.com/81249219/120381561-4430f000-c32b-11eb-8168-fdcda57f6fa4.png)
-![Screenshot_2](https://user-images.githubusercontent.com/81249219/117367367-c49a3780-aeca-11eb-987b-1c9f137603fb.png)
+![Screenshot_2](https://user-images.githubusercontent.com/81249219/126207884-c3316555-4ff9-4034-957e-0a7defaffd39.png)
 # MicSetup
 An installation builder program made in PascalABC.NET, everything was written from scratch by me, Michael Agarkov.
 
