@@ -117,7 +117,7 @@ begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.0' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.1' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -150,7 +150,7 @@ begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.0' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.1' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
