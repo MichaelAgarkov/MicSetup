@@ -117,7 +117,7 @@ begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.0' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -127,8 +127,8 @@ begin
       richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
       if(checkBox1.Checked) then begin
         progressBar1.Value := 20;
-        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt', true);
-        richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
+        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + ' License.txt', true);
+        richTextBox1.Text := richTextBox1.Text + 'Added EULA: ' + textBox1.Text + ' License.txt' + NewLine;
       end;
       progressBar1.Value := 30;
       System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe', true);
@@ -150,7 +150,7 @@ begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v2.0' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.0' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -160,8 +160,8 @@ begin
       richTextBox1.Text := richTextBox1.Text + 'Created config files' + NewLine;
       if(checkBox1.Checked) then begin
         progressBar1.Value := 20;
-        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + 'License.txt', true);
-        richTextBox1.Text := richTextBox1.Text + 'Added EULA: License.txt' + NewLine;
+        System.IO.File.Copy(textBox3.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + ' License.txt', true);
+        richTextBox1.Text := richTextBox1.Text + 'Added EULA: ' + textBox1.Text + ' License.txt' + NewLine;
       end;
       progressBar1.Value := 30;
       System.IO.File.Copy(textBox2.Text, Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + '.exe', true);
