@@ -4,6 +4,9 @@ interface
 
 uses System, System.Drawing, System.Windows.Forms, System.ComponentModel, About;
 
+var
+  NewlyBuiltInstallerLocation: string;
+
 type
   Form1 = class(Form)
     procedure aboutToolStripMenuItem_Click(sender: Object; e: EventArgs);
@@ -21,6 +24,8 @@ type
     procedure button4_Click(sender: Object; e: EventArgs);
     procedure richTextBox1_TextChanged(sender: Object; e: EventArgs);
     procedure saveFileDialog1_FileOk(sender: Object; e: CancelEventArgs);
+    procedure button5_Click(sender: Object; e: EventArgs);
+    procedure TestInstaller_Exited(sender: Object; e: EventArgs);
   {$region FormDesigner}
   private
     {$resource Unit1.Form1.resources}
@@ -56,6 +61,9 @@ type
     button4: Button;
     richTextBox1: RichTextBox;
     saveFileDialog1: SaveFileDialog;
+    button5: Button;
+    TestInstaller: System.Diagnostics.Process;
+    label6: &Label;
     treeView1: TreeView;
     {$include Unit1.Form1.inc}
   {$endregion FormDesigner}
@@ -116,8 +124,9 @@ procedure Form1.button3_Click(sender: Object; e: EventArgs);
 begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      button5.Enabled := false;
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.1' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -137,6 +146,9 @@ begin
       System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
       richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
       progressBar1.Value := 100;
+      TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
+      TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
+      button5.Enabled := true;
     end else label5.Visible := true;
   except
     richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
@@ -149,8 +161,9 @@ begin
   treeView1.SelectedNode := treeView1.Nodes[2];
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      button5.Enabled := false;
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.1' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -170,6 +183,9 @@ begin
       System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
       richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
       progressBar1.Value := 100;
+      TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
+      TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
+      button5.Enabled := true;
     end else label5.Visible := true;
   except
     richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
@@ -215,6 +231,26 @@ begin
   var Log := new System.IO.StreamWriter(saveFileDialog1.FileName, false, System.Text.Encoding.Default);
   Log.Write(richTextBox1.Text);
   Log.Close;
+end;
+
+procedure Form1.button5_Click(sender: Object; e: EventArgs);
+begin
+  try
+    label6.Text := 'Installer running...';
+    label6.ForeColor := System.Drawing.Color.Green;
+    TestInstaller.Start;
+    label6.Visible := true;
+  except
+    button5.Enabled := false;
+    label6.Text := 'Installer not found';
+    label6.ForeColor := System.Drawing.Color.Red;
+    label6.Visible := true;
+  end;
+end;
+
+procedure Form1.TestInstaller_Exited(sender: Object; e: EventArgs);
+begin
+  label6.Visible := false;
 end;
 
 end.

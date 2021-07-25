@@ -37,6 +37,9 @@ procedure InitializeComponent;
         self.textBox1 := new System.Windows.Forms.TextBox();
         self.label1 := new System.Windows.Forms.Label();
         self.saveFileDialog1 := new System.Windows.Forms.SaveFileDialog();
+        self.button5 := new System.Windows.Forms.Button();
+        self.TestInstaller := new System.Diagnostics.Process();
+        self.label6 := new System.Windows.Forms.Label();
         self.menuStrip1.SuspendLayout();
         self.BuildPanel.SuspendLayout();
         self.FilesPanel.SuspendLayout();
@@ -158,6 +161,8 @@ procedure InitializeComponent;
         // 
         // BuildPanel
         // 
+        self.BuildPanel.Controls.Add(self.label6);
+        self.BuildPanel.Controls.Add(self.button5);
         self.BuildPanel.Controls.Add(self.button4);
         self.BuildPanel.Controls.Add(self.richTextBox1);
         self.BuildPanel.Controls.Add(self.label5);
@@ -350,6 +355,40 @@ procedure InitializeComponent;
         self.saveFileDialog1.Filter := 'Log file|*.log';
         self.saveFileDialog1.Title := 'Select where to save the build log';
         self.saveFileDialog1.FileOk += saveFileDialog1_FileOk;
+        // 
+        // button5
+        // 
+        self.button5.Enabled := false;
+        self.button5.Location := new System.Drawing.Point(6, 252);
+        self.button5.Name := 'button5';
+        self.button5.Size := new System.Drawing.Size(75, 23);
+        self.button5.TabIndex := 5;
+        self.button5.Text := 'Test installer';
+        self.button5.UseVisualStyleBackColor := true;
+        self.button5.Click += button5_Click;
+        // 
+        // TestInstaller
+        // 
+        self.TestInstaller.EnableRaisingEvents := true;
+        self.TestInstaller.StartInfo.Domain := '';
+        self.TestInstaller.StartInfo.LoadUserProfile := false;
+        self.TestInstaller.StartInfo.Password := nil;
+        self.TestInstaller.StartInfo.StandardErrorEncoding := nil;
+        self.TestInstaller.StartInfo.StandardOutputEncoding := nil;
+        self.TestInstaller.StartInfo.UserName := '';
+        self.TestInstaller.SynchronizingObject := self;
+        self.TestInstaller.Exited += TestInstaller_Exited;
+        // 
+        // label6
+        // 
+        self.label6.ForeColor := System.Drawing.Color.Green;
+        self.label6.Location := new System.Drawing.Point(82, 252);
+        self.label6.Name := 'label6';
+        self.label6.Size := new System.Drawing.Size(116, 23);
+        self.label6.TabIndex := 6;
+        self.label6.Text := 'Installer running...';
+        self.label6.TextAlign := System.Drawing.ContentAlignment.MiddleLeft;
+        self.label6.Visible := false;
         // 
         // Form1
         // 
