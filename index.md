@@ -1,37 +1,19 @@
-## Welcome to GitHub Pages
+# MicSetup - A simple installation builder
 
-You can use the [editor on GitHub](https://github.com/MichaelAgarkov/MicSetup/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+MicSetup is an installation builder, created from scratch in PascalABC.NET, by [Michael Agarkov](https://github.com/MichaelAgarkov)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![Screenshot_1](https://user-images.githubusercontent.com/81249219/120381561-4430f000-c32b-11eb-8168-fdcda57f6fa4.png)
+![Screenshot_2](https://user-images.githubusercontent.com/81249219/126207884-c3316555-4ff9-4034-957e-0a7defaffd39.png)
 
-### Markdown
+You can read the [wiki](https://github.com/MichaelAgarkov/MicSetup/wiki) to find more info about this project
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Download MicSetup
 
-```markdown
-Syntax highlighted code block
+- [Releases](https://github.com/MichaelAgarkov/MicSetup/releases)
+- [Source code](https://github.com/MichaelAgarkov/MicSetup)
 
-# Header 1
-## Header 2
-### Header 3
+### Compiler
+I recommend using [PascalABC.NET version 3.4.2 build 2050](https://archive.org/download/pascalabc.net/PascalABCNETWithDotNetSetup.exe) because it's the version MicSetup is compiled in.
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/MichaelAgarkov/MicSetup/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## MicSetup License
+MicSetup is published under the [Eclipse Public License 2.0](https://github.com/MichaelAgarkov/MicSetup/blob/main/License.txt) for your freedom to [modify](https://github.com/MichaelAgarkov/MicSetup/wiki/Modifying) the program and the installer the way you need them to be.
