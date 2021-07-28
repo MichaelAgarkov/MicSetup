@@ -13,7 +13,7 @@ You can read the [wiki](https://github.com/MichaelAgarkov/MicSetup/wiki) to find
 - [Releases](https://github.com/MichaelAgarkov/MicSetup/releases)
 - [Source code](https://github.com/MichaelAgarkov/MicSetup)
 
-### Compiler
+### Compiler for the source code
 I recommend using [PascalABC.NET version 3.4.2 build 2050](https://archive.org/download/pascalabc.net/PascalABCNETWithDotNetSetup.exe) because it's the version MicSetup is compiled in.
 
 ## MicSetup License
