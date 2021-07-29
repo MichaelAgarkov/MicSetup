@@ -2,11 +2,11 @@
 
 MicSetup is an installation builder, made from scratch in PascalABC.NET by [Michael Agarkov](https://github.com/MichaelAgarkov).
 
-Installation builder
+Installation builder:
 
 ![Screenshot_1](https://user-images.githubusercontent.com/81249219/120381561-4430f000-c32b-11eb-8168-fdcda57f6fa4.png)
 
-A MicSetup installer
+A MicSetup installer:
 
 ![Screenshot_2](https://user-images.githubusercontent.com/81249219/126207884-c3316555-4ff9-4034-957e-0a7defaffd39.png)
 
