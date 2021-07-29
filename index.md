@@ -22,3 +22,8 @@ I recommend using [PascalABC.NET version 3.4.2 build 2050](https://archive.org/d
 
 ## MicSetup License
 MicSetup is published under the [Eclipse Public License 2.0](https://github.com/MichaelAgarkov/MicSetup/blob/main/License.txt) for your freedom to [modify](https://github.com/MichaelAgarkov/MicSetup/wiki/Modifying) the program and the installer the way you need them to be.
+
+---
+Copyright (c) 2021, Michael Agarkov
+
+All rights reserved.
