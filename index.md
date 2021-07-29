@@ -1,4 +1,4 @@
-# MicSetup - A simple installation builder
+# MicSetup - A simple and compact installation builder
 
 MicSetup is an installation builder, made from scratch in PascalABC.NET by [Michael Agarkov](https://github.com/MichaelAgarkov).
 
