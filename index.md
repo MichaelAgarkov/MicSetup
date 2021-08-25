@@ -25,3 +25,5 @@ MicSetup is published under the [**Eclipse Public License 2.0**](https://github.
 
 ---
 Copyright (c) 2021, [Michael Agarkov](https://github.com/MichaelAgarkov)
+<br>
+All rights reserved.
