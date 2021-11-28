@@ -6,6 +6,7 @@ uses System, System.Drawing, System.Windows.Forms, System.ComponentModel, About;
 
 var
   NewlyBuiltInstallerLocation: string;
+  BuildingInstaller: boolean = false;
 
 type
   Form1 = class(Form)
@@ -26,6 +27,7 @@ type
     procedure saveFileDialog1_FileOk(sender: Object; e: CancelEventArgs);
     procedure button5_Click(sender: Object; e: EventArgs);
     procedure TestInstaller_Exited(sender: Object; e: EventArgs);
+    procedure Form1_FormClosing(sender: Object; e: FormClosingEventArgs);
   {$region FormDesigner}
   private
     {$resource Unit1.Form1.resources}
@@ -124,6 +126,7 @@ procedure Form1.button3_Click(sender: Object; e: EventArgs);
 begin
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      BuildingInstaller := true;
       button5.Enabled := false;
       label5.Visible := false;
       richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
@@ -149,10 +152,12 @@ begin
       TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
       TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
       button5.Enabled := true;
+      BuildingInstaller := false;
     end else label5.Visible := true;
   except
     richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
     progressBar1.Value := 0;
+    BuildingInstaller := false;
   end;
 end;
 
@@ -161,6 +166,7 @@ begin
   treeView1.SelectedNode := treeView1.Nodes[2];
   try
     if((textBox1.Text <> '') and (textBox2.Text <> '') and ((textBox3.Text = '') and checkBox1.Checked = false) and (textBox4.Text <> '')) then begin
+      BuildingInstaller := true;
       button5.Enabled := false;
       label5.Visible := false;
       richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
@@ -186,10 +192,12 @@ begin
       TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
       TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
       button5.Enabled := true;
+      BuildingInstaller := false;
     end else label5.Visible := true;
   except
     richTextBox1.Text := richTextBox1.Text + 'An unknown error occured while building the installer.' + NewLine + 'This can occur if the output folder contains files with the same name.';
     progressBar1.Value := 0;
+    BuildingInstaller := false;
   end;
 end;
 
@@ -251,6 +259,11 @@ end;
 procedure Form1.TestInstaller_Exited(sender: Object; e: EventArgs);
 begin
   label6.Visible := false;
+end;
+
+procedure Form1.Form1_FormClosing(sender: Object; e: FormClosingEventArgs);
+begin
+  if(BuildingInstaller) then e.Cancel := true;
 end;
 
 end.

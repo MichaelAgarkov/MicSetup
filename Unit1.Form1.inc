@@ -18,6 +18,8 @@ procedure InitializeComponent;
         self.openFileDialog1 := new System.Windows.Forms.OpenFileDialog();
         self.openFileDialog2 := new System.Windows.Forms.OpenFileDialog();
         self.BuildPanel := new System.Windows.Forms.Panel();
+        self.label6 := new System.Windows.Forms.Label();
+        self.button5 := new System.Windows.Forms.Button();
         self.button4 := new System.Windows.Forms.Button();
         self.richTextBox1 := new System.Windows.Forms.RichTextBox();
         self.label5 := new System.Windows.Forms.Label();
@@ -37,9 +39,7 @@ procedure InitializeComponent;
         self.textBox1 := new System.Windows.Forms.TextBox();
         self.label1 := new System.Windows.Forms.Label();
         self.saveFileDialog1 := new System.Windows.Forms.SaveFileDialog();
-        self.button5 := new System.Windows.Forms.Button();
         self.TestInstaller := new System.Diagnostics.Process();
-        self.label6 := new System.Windows.Forms.Label();
         self.menuStrip1.SuspendLayout();
         self.BuildPanel.SuspendLayout();
         self.FilesPanel.SuspendLayout();
@@ -174,6 +174,28 @@ procedure InitializeComponent;
         self.BuildPanel.Size := new System.Drawing.Size(291, 287);
         self.BuildPanel.TabIndex := 4;
         self.BuildPanel.Visible := false;
+        // 
+        // label6
+        // 
+        self.label6.ForeColor := System.Drawing.Color.Green;
+        self.label6.Location := new System.Drawing.Point(82, 252);
+        self.label6.Name := 'label6';
+        self.label6.Size := new System.Drawing.Size(116, 23);
+        self.label6.TabIndex := 6;
+        self.label6.Text := 'Installer running...';
+        self.label6.TextAlign := System.Drawing.ContentAlignment.MiddleLeft;
+        self.label6.Visible := false;
+        // 
+        // button5
+        // 
+        self.button5.Enabled := false;
+        self.button5.Location := new System.Drawing.Point(6, 252);
+        self.button5.Name := 'button5';
+        self.button5.Size := new System.Drawing.Size(75, 23);
+        self.button5.TabIndex := 5;
+        self.button5.Text := 'Test installer';
+        self.button5.UseVisualStyleBackColor := true;
+        self.button5.Click += button5_Click;
         // 
         // button4
         // 
@@ -356,17 +378,6 @@ procedure InitializeComponent;
         self.saveFileDialog1.Title := 'Select where to save the build log';
         self.saveFileDialog1.FileOk += saveFileDialog1_FileOk;
         // 
-        // button5
-        // 
-        self.button5.Enabled := false;
-        self.button5.Location := new System.Drawing.Point(6, 252);
-        self.button5.Name := 'button5';
-        self.button5.Size := new System.Drawing.Size(75, 23);
-        self.button5.TabIndex := 5;
-        self.button5.Text := 'Test installer';
-        self.button5.UseVisualStyleBackColor := true;
-        self.button5.Click += button5_Click;
-        // 
         // TestInstaller
         // 
         self.TestInstaller.EnableRaisingEvents := true;
@@ -378,17 +389,6 @@ procedure InitializeComponent;
         self.TestInstaller.StartInfo.UserName := '';
         self.TestInstaller.SynchronizingObject := self;
         self.TestInstaller.Exited += TestInstaller_Exited;
-        // 
-        // label6
-        // 
-        self.label6.ForeColor := System.Drawing.Color.Green;
-        self.label6.Location := new System.Drawing.Point(82, 252);
-        self.label6.Name := 'label6';
-        self.label6.Size := new System.Drawing.Size(116, 23);
-        self.label6.TabIndex := 6;
-        self.label6.Text := 'Installer running...';
-        self.label6.TextAlign := System.Drawing.ContentAlignment.MiddleLeft;
-        self.label6.Visible := false;
         // 
         // Form1
         // 
@@ -405,6 +405,7 @@ procedure InitializeComponent;
         self.Name := 'Form1';
         self.StartPosition := System.Windows.Forms.FormStartPosition.CenterScreen;
         self.Text := 'MicSetup';
+        self.FormClosing += Form1_FormClosing;
         self.Load += Form1_Load;
         self.menuStrip1.ResumeLayout(false);
         self.menuStrip1.PerformLayout();

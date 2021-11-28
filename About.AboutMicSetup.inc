@@ -34,7 +34,7 @@ procedure InitializeComponent;
         self.linkLabel1.Size := new System.Drawing.Size(190, 68);
         self.linkLabel1.TabIndex := 1;
         self.linkLabel1.TabStop := true;
-        self.linkLabel1.Text := 'MicSetup'#13#10'Version 3.2'#13#10#13#10'By Michael Agarkov'#13#10'Copyright © 2021 Michael Agarkov';
+        self.linkLabel1.Text := 'MicSetup'#13#10'Version 4.0'#13#10#13#10'By Michael Agarkov'#13#10'Copyright © 2021 Michael Agarkov';
         self.linkLabel1.UseCompatibleTextRendering := true;
         self.linkLabel1.LinkClicked += linkLabel1_LinkClicked;
         // 
