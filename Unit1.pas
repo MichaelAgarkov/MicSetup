@@ -129,7 +129,7 @@ begin
       BuildingInstaller := true;
       button5.Enabled := false;
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v4.1' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -147,7 +147,7 @@ begin
       richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
       progressBar1.Value := 50;
       System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
-      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
+      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished.';
       progressBar1.Value := 100;
       TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
       TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
@@ -169,7 +169,7 @@ begin
       BuildingInstaller := true;
       button5.Enabled := false;
       label5.Visible := false;
-      richTextBox1.Text := 'MicSetup v3.2' + NewLine + '======== Build log ========' + NewLine;
+      richTextBox1.Text := 'MicSetup v4.1' + NewLine + '======== Build log ========' + NewLine;
       System.IO.Directory.CreateDirectory(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text);
       richTextBox1.Text := richTextBox1.Text + 'Output folder: ' + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + NewLine;
       progressBar1.Value := 1;
@@ -187,7 +187,7 @@ begin
       richTextBox1.Text := richTextBox1.Text + 'Copied main executable: ' + textBox1.Text + '.exe' + NewLine;
       progressBar1.Value := 50;
       System.IO.File.Copy('Installer.engine', Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe', true);
-      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished';
+      richTextBox1.Text := richTextBox1.Text + 'Created installer: ' + textBox1.Text + 'Installer.exe' + NewLine + 'Installation building process finished.';
       progressBar1.Value := 100;
       TestInstaller.StartInfo.FileName := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\' + textBox1.Text + 'Installer.exe';
       TestInstaller.StartInfo.WorkingDirectory := Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + '\MicSetup Installers\' + textBox1.Text + '\' + textBox4.Text + '\';
