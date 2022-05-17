@@ -23,7 +23,7 @@ I recommend using [PascalABC.NET version 3.4.2 build 2050](https://archive.org/d
 For the installer, I recommend using [Inno Setup 6.0.5](https://archive.org/download/InnoSetup6.0.5/innosetup-6.0.5.exe), because it's the version I use, and the version it is compiled in.
 
 ## MicSetup License
-MicSetup is published under the [**Eclipse Public License 2.0**](https://github.com/MichaelAgarkov/MicSetup/blob/main/License.txt) for your freedom to [modify](https://github.com/MichaelAgarkov/MicSetup/wiki/Modifying) the installers and the builder itself the way you need them to be.
+MicSetup is published under the [**Eclipse Public License 2.0**](https://github.com/MichaelAgarkov/MicSetup/blob/main/License.txt) for your freedom to [modify](https://github.com/MichaelAgarkov/MicSetup/wiki/Modifying) the installers and the builder itself the way you want them to be.
 
 ---
 Copyright (c) 2022, [Michael Agarkov](https://github.com/MichaelAgarkov)
