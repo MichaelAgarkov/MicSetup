@@ -26,6 +26,6 @@ For the installer, I recommend using [Inno Setup 6.0.5](https://archive.org/down
 MicSetup is published under the [**Eclipse Public License 2.0**](https://github.com/MichaelAgarkov/MicSetup/blob/main/License.txt) for your freedom to [modify](https://github.com/MichaelAgarkov/MicSetup/wiki/Modifying) the installers and the builder the way you want them to be.
 
 ---
-Copyright (c) 2022, [Michael Agarkov](https://github.com/MichaelAgarkov)
+Copyright (c) 2021-2022, [Michael Agarkov](https://github.com/MichaelAgarkov)
 <br>
 All rights reserved.
